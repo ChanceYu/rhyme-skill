@@ -12,8 +12,6 @@ A rhyming poetry skill for Chinese, English, and Korean, compatible with all maj
 npx skills add chanceyu/rhyme-skill
 ```
 
-> This installs the skill into `.claude/skills/rhyme/` in your current project and makes `/rhyme` available immediately.
-
 
 ## Usage
 

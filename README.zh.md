@@ -12,8 +12,6 @@
 npx skills add chanceyu/rhyme-skill
 ```
 
-> 安装后技能会写入当前项目的 `.claude/skills/rhyme/`，即可使用 `/rhyme`。
-
 
 ## 用法
 
