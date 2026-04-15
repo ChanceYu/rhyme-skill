@@ -1,0 +1,85 @@
+# rhyme - 압운 창작 스킬
+
+> English version: [README.md](./README.md)
+> 中文版: [README.zh.md](./README.zh.md)
+
+중국어, 영어, 한국어 압운 창작을 지원하는 스킬로, 다양한 AI 에이전트 플랫폼에서 사용할 수 있습니다.
+
+---
+
+## 설치
+
+```bash
+npx skills add chanceyu/rhyme-skill
+```
+
+> 설치 후 현재 프로젝트의 `.claude/skills/rhyme/`에 스킬이 추가되며 `/rhyme`를 바로 사용할 수 있습니다.
+
+---
+
+## 사용법
+
+### 명령 모드
+
+```
+/rhyme <내용>
+```
+
+**중국어 예시:**
+```
+/rhyme 床前明月光，疑是地上霜
+/rhyme 想在你那买块地，土味情话
+```
+
+**영어 예시:**
+```
+/rhyme i like you more than i can say
+/rhyme The moon is high, the stars are bright
+```
+
+**한국어 예시:**
+```
+/rhyme 가을 하늘 아래 서서
+/rhyme 봄비 내리는 날
+```
+
+### 프롬프트 모드
+
+프롬프트에 압운 요청과 내용이 함께 들어 있으면 `/rhyme` 접두사 없이도 자동으로 스킬이 발동합니다.
+
+```
+写出下一句土味情话要押韵，我想买你一块地
+押韵续写：路遥知马力，日久见人心
+rhyme the next line for: i like you more than i can say
+make this rhyme: the stars are bright tonight
+운을 맞춰서 이어 써줘: 가을 하늘 아래 서서
+운율 맞춰줘: 봄비 내리는 날
+```
+
+---
+
+## 기능 설명
+
+입력 언어를 감지하고, 시 형식과 운을 판단한 뒤, 서로 다른 스타일의 압운 이어쓰기를 **2개 그룹** 생성합니다. 질문하지 않고, 설명하지 않으며, 바로 결과를 출력합니다.
+
+**중국어** - 오언시, 칠언시, 사(词牌体), 자유체를 지원합니다. 스타일: 豪放, 婉约, 清新, 沉郁, 抒情, 禅意 등
+
+**영어** - Limerick (AABBA), Couplet (AA BB), Quatrain (ABAB/ABCB), 자유시를 지원합니다. 스타일: Bold, Lyrical, Fresh, Melancholic, Reflective, Zen 등
+
+**한국어** - 시조와 현대시(자유시)를 지원합니다. 스타일: 호방, 서정적, 청신, 우울, 선적, 전원 등
+
+---
+
+## 파일 구조
+
+```
+SKILL.md          # 스킬 진입점 - 언어 감지 라우터, 실행 시 규칙 파일을 동적으로 로드
+rules/
+  zh.md           # 중국어 압운 규칙
+  en.md           # 영어 압운 규칙
+  ko.md           # 한국어 압운 규칙
+README.md         # English documentation
+README.zh.md      # 中文说明
+README.ko.md      # 한국어 설명
+docs/             # 설계 문서 및 구현 계획
+```
