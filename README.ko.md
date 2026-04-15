@@ -1,11 +1,10 @@
 # rhyme - 압운 창작 스킬
 
-> English version: [README.md](./README.md)
+> English version: [README.md](./README.md) <br/>
 > 中文版: [README.zh.md](./README.zh.md)
 
 중국어, 영어, 한국어 압운 창작을 지원하는 스킬로, 다양한 AI 에이전트 플랫폼에서 사용할 수 있습니다.
 
----
 
 ## 설치
 
@@ -15,7 +14,6 @@ npx skills add chanceyu/rhyme-skill
 
 > 설치 후 현재 프로젝트의 `.claude/skills/rhyme/`에 스킬이 추가되며 `/rhyme`를 바로 사용할 수 있습니다.
 
----
 
 ## 사용법
 
@@ -56,7 +54,6 @@ make this rhyme: the stars are bright tonight
 운율 맞춰줘: 봄비 내리는 날
 ```
 
----
 
 ## 기능 설명
 
@@ -68,7 +65,6 @@ make this rhyme: the stars are bright tonight
 
 **한국어** - 시조와 현대시(자유시)를 지원합니다. 스타일: 호방, 서정적, 청신, 우울, 선적, 전원 등
 
----
 
 ## 파일 구조
 

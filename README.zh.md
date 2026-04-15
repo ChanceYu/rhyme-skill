@@ -1,11 +1,10 @@
 # rhyme — 押韵创作 Skill
 
-> English version: [README.md](./README.md)
+> English version: [README.md](./README.md) <br/>
 > 한국어 버전: [README.ko.md](./README.ko.md)
 
 支持中文、英文、韩语的押韵创作技能，适用于各类 AI Agent 平台。
 
----
 
 ## 安装
 
@@ -15,7 +14,6 @@ npx skills add chanceyu/rhyme-skill
 
 > 安装后技能会写入当前项目的 `.claude/skills/rhyme/`，即可使用 `/rhyme`。
 
----
 
 ## 用法
 
@@ -55,7 +53,6 @@ rhyme the next line for: i like you more than i can say
 make this rhyme: the stars are bright tonight
 ```
 
----
 
 ## 功能说明
 
@@ -67,7 +64,6 @@ make this rhyme: the stars are bright tonight
 
 **韩语** — 支持시조（時調）和현대시（自由诗）。风格：호방、서정적、청신、우울、선적、전원 等
 
----
 
 ## 文件结构
 

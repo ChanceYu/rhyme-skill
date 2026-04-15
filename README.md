@@ -1,11 +1,10 @@
 # rhyme — Rhyming Poetry Skill
 
-> 中文版：[README.zh.md](./README.zh.md)
+> 中文版：[README.zh.md](./README.zh.md) <br/>
 > 한국어 버전: [README.ko.md](./README.ko.md)
 
 A rhyming poetry skill for Chinese, English, and Korean, compatible with all major AI agent platforms.
 
----
 
 ## Installation
 
@@ -15,7 +14,6 @@ npx skills add chanceyu/rhyme-skill
 
 > This installs the skill into `.claude/skills/rhyme/` in your current project and makes `/rhyme` available immediately.
 
----
 
 ## Usage
 
@@ -57,7 +55,6 @@ rhyme the next line for: i like you more than i can say
 make this rhyme: the stars are bright tonight
 ```
 
----
 
 ## What it does
 
@@ -69,7 +66,6 @@ Detects the input language, identifies the poetic form and rhyme sound, then gen
 
 **Korean** — supports 시조 (Sijo) and 현대시 (free verse). Styles: 호방, 서정적, 청신, 우울, 선적, 전원 etc.
 
----
 
 ## File structure
 
