@@ -4,6 +4,15 @@
 
 A rhyming poetry skill for Chinese, English, and Korean, compatible with all major AI agent platforms.
 
+## Features
+
+- ✅ Triggers in both command mode (`/rhyme <content>`) and natural-language prompt mode
+- ✅ Detects Chinese, English, and Korean input automatically and routes to the right rule set
+- ✅ Honors explicit poetic-form requests before falling back to automatic form detection
+- ✅ Generates 2 rhyming continuation groups by default, with support for up to 10 groups on request
+- ✅ Covers language-specific forms such as 五言 / 七言 / ci-poetry, Limerick / Couplet / Quatrain, and Sijo
+- ✅ Outputs results directly without extra clarification turns
+
 ## Installation
 
 ```bash
