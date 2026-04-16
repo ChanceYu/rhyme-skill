@@ -141,18 +141,21 @@ Output **exactly 3 groups** in order:
 **Output:**
 
 **[Style 1: Lyrical]**
+> The moon is high, the stars are bright
 The wind sings soft through the quiet night,
 And carries your name like a fading light,
 I reach for you, but you're gone from sight,
 Only shadows remain of what felt right.
 
 **[Style 2: Bold]**
+> The moon is high, the stars are bright
 We rise before the dawn takes flight,
 And forge our path with all our might,
 No storm can dim this burning light,
 We'll face the world and win the fight.
 
 **[Style 3: Pastoral]**
+> The moon is high, the stars are bright
 The fireflies glow in the meadow at night,
 The river runs soft in the silver moonlight,
 A heron stands still in the last fading light,
