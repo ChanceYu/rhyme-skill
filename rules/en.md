@@ -57,49 +57,72 @@ Find the final word of each line and extract its end sound (stressed vowel + tra
 - If only one line, use that line's final word
 - Record the rhyme label to constrain generation (e.g. `-ight`, `-oon`)
 
-## Step 3: Generate 2-3 Rhyming Groups
+## Step 3: Generate Rhyming Output
 
-**Do not ask the user. Generate directly.**
-
-Generate **2-3 groups** of rhyming lines:
-
-**Line length:**
-- Limerick: 5 lines (AABBA), lines 1/2/5 are longer (~8 syllables), lines 3/4 are shorter (~5 syllables)
-- Couplet: 2-4 lines (paired end rhymes)
-- Quatrain: 4 lines (ABAB or ABCB)
-- Free verse: match the approximate word count of the longest input line; if unclear, default to 6-8 words per line (roughly 8-10 syllables)
-
-**Rhyme requirement:**
-- The last line of each group must rhyme with at least one other line in the group
-- Each group may use its own rhyme sound (not required to match the Step 2 reference); aim for at least 1 other line per group rhyming with the last line
-
-**Style requirement:**
-- Each group uses a different style tag chosen from: Bold / Lyrical / Fresh / Melancholic / Scenic / Reflective / Zen / Pastoral
-- Different groups should use different imagery and vocabulary
-
-**Output format template (follow strictly):**
-
-```
-**[Style 1: {tag}]**
-{line 1}
-{line 2}
-{line 3}
-{line 4} (optional)
-
-**[Style 2: {tag}]**
-{line 1}
-{line 2}
-{line 3}
-{line 4} (optional)
-
-**[Style 3: {tag}]** (if generating third group)
-{line 1}
-{line 2}
-{line 3}
-{line 4} (optional)
-```
+Based on the Step 1 input type (or `explicit_form`), select the corresponding template:
 
 ---
+
+### Template A — Poetry input / Explicit format specified
+
+**Trigger:** Input type is "Poetry", or Step 0 detected an `explicit_form`.
+
+Output **1 group**, strictly following the detected poetic form:
+
+- **Limerick:** 5 lines, AABBA rhyme scheme, lines 1/2/5 longer (~8 syllables), lines 3/4 shorter (~5 syllables)
+- **Couplet:** 2–4 lines with paired end rhymes, last line must rhyme with at least one preceding line
+- **Quatrain:** 4 lines, ABAB or ABCB rhyme scheme
+
+Style tag: choose one from Bold / Lyrical / Fresh / Melancholic / Scenic / Reflective / Zen / Pastoral
+
+Output format:
+
+~~~
+**[{Poetic form} · {Style}]**
+{line 1}
+{line 2}
+{line 3}
+{line 4} (if applicable — Limerick has 5 lines; Couplet may have 2)
+~~~
+
+---
+
+### Template B — Ordinary sentence input
+
+**Trigger:** Input type is "Ordinary sentence".
+
+Output **2 groups** in order:
+
+~~~
+**[Colloquial Rhyme]**
+{1–2 lines matching the casual register and vocabulary of the input; end word must rhyme with the input's last word or a prominent end word}
+
+**[Poetic Version]**
+{2–4 lines elevated to literary register; end rhyme required; richer imagery than the colloquial version}
+~~~
+
+---
+
+### Template C — Cannot determine
+
+**Trigger:** Input type is "Cannot determine".
+
+Output **exactly 3 groups** in order:
+
+~~~
+**[Colloquial Rhyme]**
+{1–2 casual rhyming lines; end word must rhyme with the input's last word or a prominent end word}
+
+**[{Poetry style 1}]**
+{2–4 poetic lines; style tag from: Bold / Lyrical / Fresh / Melancholic / Scenic / Reflective / Zen / Pastoral}
+
+**[{Poetry style 2}]**
+{2–4 poetic lines; different style tag from group 1; different imagery and vocabulary}
+~~~
+
+---
+
+> **Note:** The examples below use the old 3-group format. Follow Templates A/B/C above for the correct output format. Examples are provided for tonal reference only.
 
 ## Complete Output Examples
 
