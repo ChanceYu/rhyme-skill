@@ -4,18 +4,44 @@ After receiving the instruction, process in order below. **Do not ask the user. 
 
 Steps 1 and 2 are internal analysis steps — do not output them. Output only the Step 3 rhyming compositions.
 
-## Step 1: Detect Poetic Form
+## Step 1: Detect Input Type and Poetic Form
 
-Apply the first matching condition in order from top to bottom:
+If Step 0 detected an `explicit_form`, skip this step and go directly to Step 3 to generate using that form.
 
-| Condition | Form |
-|-----------|------|
-| Input shows AABBA pattern with alternating longer/shorter lines | Limerick |
-| Lines come in pairs where end words rhyme (AA BB structure) | Couplet |
-| 4-line stanza with ABAB or ABCB rhyme scheme | Quatrain |
-| Other (prose, sentences, irregular text) | Free verse |
+Otherwise, apply the following two sub-steps:
 
-Only these four forms are recognized. If the input could match multiple conditions, use the first match in the table above. Do not attempt to detect sonnets, haiku, ballads, or other forms.
+### Sub-step 1A: Rhyme structure regularity
+
+Examine the end words of each line:
+
+| Condition | Regularity result |
+|-----------|-------------------|
+| Lines follow AABBA end-rhyme pattern with alternating longer/shorter lines | Positive — form: Limerick |
+| Lines come in pairs with matching end rhymes (AA BB structure) | Positive — form: Couplet |
+| 4-line stanza with ABAB or ABCB end-rhyme scheme | Positive — form: Quatrain |
+| No detectable end-rhyme pattern | Negative |
+
+Rhyme structure result: detectable pattern = **Positive**; no pattern = **Negative**
+
+Note: The detected form label (Limerick/Couplet/Quatrain) is carried forward to Step 3 Template A when the input type is "Poetry".
+
+### Sub-step 1B: Classical/formal register
+
+Check the input for any of the following:
+
+- **Archaic words:** thee, thou, doth, hath, 'tis, wouldst, art (as "you are"), henceforth, forsooth
+- **Formal literary devices:** alliteration (3+ words in a line sharing the same initial sound), obvious iambic meter, apostrophe to nature/abstract concepts (e.g. "O Moon", "Death, be not proud")
+
+Contains any → register **Positive**; contains none → register **Negative**
+
+### Combined judgment
+
+| Rhyme structure | Classical register | Input type |
+|----------------|-------------------|------------|
+| Positive | Positive | **Poetry** |
+| Negative | Negative | **Ordinary sentence** |
+| Positive | Negative | **Cannot determine** |
+| Negative | Positive | **Cannot determine** |
 
 ## Step 2: Extract Rhyme Sound
 
