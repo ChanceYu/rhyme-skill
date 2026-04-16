@@ -6,6 +6,9 @@
 A rhyming poetry skill for Chinese, English, and Korean, compatible with all major AI agent platforms.
 
 
+![](./assets/snipaste.png)
+
+
 ## Installation
 
 ```bash

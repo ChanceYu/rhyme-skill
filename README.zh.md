@@ -6,6 +6,9 @@
 支持中文、英文、韩语的押韵创作技能，适用于各类 AI Agent 平台。
 
 
+![](./assets/snipaste.png)
+
+
 ## 安装
 
 ```bash
