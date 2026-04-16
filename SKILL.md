@@ -31,6 +31,7 @@ description: >
 | "write a couplet" | en: Couplet |
 | "write a quatrain" | en: Quatrain |
 | "시조로 써줘" | ko: 시조 |
+| "현대시로 써줘"、"자유시로 써줘" | ko: 현대시 |
 
 若检测到显式格式指定，记录为 **`explicit_form`**，Step 3 执行时直接按该格式生成，跳过 rules 文件中的输入类型判断逻辑。
 
@@ -70,4 +71,4 @@ description: >
 
 严格按加载的规则文件内容执行，**直接输出结果，不询问，不输出分析过程**。
 
-若 Step 0 检测到 `explicit_form`，将其传递给规则文件；规则文件会跳过自动输入类型判断，直接按指定格式生成。
+若 Step 0 检测到 `explicit_form`，执行时将该值带入规则文件的 Step 1 判断中（同一对话上下文，Step 0 的记录在规则文件执行时可直接引用）；规则文件会跳过自动输入类型判断，直接按指定格式生成。
