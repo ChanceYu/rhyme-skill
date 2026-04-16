@@ -79,6 +79,7 @@ Output format:
 
 ~~~
 **[{Poetic form} · {Style}]**
+> {original input}
 {line 1}
 {line 2}
 {line 3}
@@ -95,9 +96,11 @@ Output **2 groups** in order:
 
 ~~~
 **[Colloquial Rhyme]**
+> {original input}
 {1–2 lines matching the casual register and vocabulary of the input; end word must rhyme with the input's last word or a prominent end word}
 
 **[Poetic Version]**
+> {original input}
 {2–4 lines elevated to literary register; end rhyme required; richer imagery than the colloquial version}
 ~~~
 
@@ -111,12 +114,15 @@ Output **exactly 3 groups** in order:
 
 ~~~
 **[Colloquial Rhyme]**
+> {original input}
 {1–2 casual rhyming lines; end word must rhyme with the input's last word or a prominent end word}
 
 **[{Poetry style 1}]**
+> {original input}
 {2–4 poetic lines; style tag from: Bold / Lyrical / Fresh / Melancholic / Scenic / Reflective / Zen / Pastoral}
 
 **[{Poetry style 2}]**
+> {original input}
 {2–4 poetic lines; different style tag from group 1; different imagery and vocabulary}
 ~~~
 
