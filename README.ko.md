@@ -2,7 +2,7 @@
 
 [中文](./README.zh.md) | [English](./README.md)
 
-중국어, 영어, 한국어 압운 창작을 지원하는 스킬로, 다양한 AI 에이전트 플랫폼에서 사용할 수 있습니다.
+중국어, 영어, 한국어 시, 가사, 문장의 운율을 지원하는 AI 기반 라임 어시스턴트 스킬.
 
 ## 주요 기능
 
@@ -79,5 +79,4 @@ rules/
 README.md         # English documentation
 README.zh.md      # 中文说明
 README.ko.md      # 한국어 설명
-docs/             # 설계 문서 및 구현 계획
 ```

@@ -2,7 +2,7 @@
 
 [中文](./README.zh.md) | [한국어](./README.ko.md)
 
-A rhyming poetry skill for Chinese, English, and Korean, compatible with all major AI agent platforms.
+AI-powered rhyming assistant skill for Chinese, English, and Korean poetry, lyrics, and sentences.
 
 ## Features
 
@@ -80,5 +80,4 @@ rules/
 README.md         # English documentation
 README.zh.md      # 中文说明
 README.ko.md      # 한국어 설명
-docs/             # Design specs and implementation plans
 ```

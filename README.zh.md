@@ -2,7 +2,7 @@
 
 [English](./README.md) | [한국어](./README.ko.md)
 
-支持中文、英文、韩语的押韵创作技能，适用于各类 AI Agent 平台。
+支持中英韩三语的智能押韵与韵脚检测 AI skill。 
 
 ## 功能特性
 
@@ -78,5 +78,4 @@ rules/
 README.md         # English documentation
 README.zh.md      # 中文说明
 README.ko.md      # 한국어 설명
-docs/             # 设计文档与实现计划
 ```
