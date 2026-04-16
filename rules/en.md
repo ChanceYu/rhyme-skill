@@ -29,7 +29,7 @@ Find the final word of each line and extract its end sound (stressed vowel + tra
 - Take the most frequent end sound as the primary rhyme reference
 - If all end sounds differ, use the last line's final word
 - If only one line, use that line's final word
-- Record the rhyme label for output annotation (e.g. `-ight`, `-oon`)
+- Record the rhyme label to constrain generation (e.g. `-ight`, `-oon`)
 
 ## Step 3: Generate 2-3 Rhyming Groups
 
@@ -60,26 +60,18 @@ Generate **2-3 groups** of rhyming lines:
 {line 3}
 {line 4} (optional)
 
-> Rhyme: -{sound} ({rhyming words}), {form name}
-
 **[Style 2: {tag}]**
 {line 1}
 {line 2}
 {line 3}
 {line 4} (optional)
 
-> Rhyme: -{sound} ({rhyming words}), {form name}
-
 **[Style 3: {tag}]** (if generating third group)
 {line 1}
 {line 2}
 {line 3}
 {line 4} (optional)
-
-> Rhyme: -{sound} ({rhyming words}), {form name}
 ```
-
-**Rhyme annotation format example:** `> Rhyme: -ight (night/light/right), free verse`
 
 ---
 
@@ -99,23 +91,17 @@ And carries your name like a fading light,
 I reach for you, but you're gone from sight,
 Only shadows remain of what felt right.
 
-> Rhyme: -ight (night/light/sight/right), free verse
-
 **[Style 2: Bold]**
 We rise before the dawn takes flight,
 And forge our path with all our might,
 No storm can dim this burning light,
 We'll face the world and win the fight.
 
-> Rhyme: -ight (flight/might/light/fight), free verse
-
 **[Style 3: Pastoral]**
 The fireflies glow in the meadow at night,
 The river runs soft in the silver moonlight,
 A heron stands still in the last fading light,
 And all of the world feels quiet and right.
-
-> Rhyme: -ight (night/moonlight/light/right), free verse
 
 ---
 
@@ -131,16 +117,10 @@ And all of the world feels quiet and right.
 The morning dew clings to the grass so new,
 And songbirds wake beneath the skies of blue.
 
-> Rhyme: -oo (new/blue), couplet
-
 **[Style 2: Melancholic]**
 The letters you left are just fragments I knew,
 I read them again in the cold morning dew.
 
-> Rhyme: -oo (knew/dew), couplet
-
 **[Style 3: Reflective]**
 Each path that I have walked brings me back to the view,
 Where the river runs clear and the sky opens true.
-
-> Rhyme: -oo (view/true), couplet
