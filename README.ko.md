@@ -1,20 +1,14 @@
-# rhyme - 압운 창작 스킬
+![](./assets/banner.png)
 
-> English version: [README.md](./README.md) <br/>
-> 中文版: [README.zh.md](./README.zh.md)
+[中文](./README.zh.md) | [English](./README.md)
 
 중국어, 영어, 한국어 압운 창작을 지원하는 스킬로, 다양한 AI 에이전트 플랫폼에서 사용할 수 있습니다.
-
-
-![](./assets/snipaste.png)
-
 
 ## 설치
 
 ```bash
 npx skills add chanceyu/rhyme-skill
 ```
-
 
 ## 사용법
 
@@ -55,17 +49,15 @@ make this rhyme: the stars are bright tonight
 운율 맞춰줘: 봄비 내리는 날
 ```
 
-
 ## 기능 설명
 
-입력 언어를 감지하고, 시 형식과 운을 판단한 뒤, 서로 다른 스타일의 압운 이어쓰기를 **2개 그룹** 생성합니다. 질문하지 않고, 설명하지 않으며, 바로 결과를 출력합니다.
+입력 언어를 감지하고, 시 형식과 운을 판단한 뒤, 압운 이어쓰기를 기본적으로 **2개 그룹** 생성합니다. 사용자가 그룹 수를 명시하면 그 수를 따르며, 최대 **10개 그룹**까지 지원합니다. 질문하지 않고, 설명하지 않으며, 바로 결과를 출력합니다.
 
 **중국어** - 오언시, 칠언시, 사(词牌体), 자유체를 지원합니다. 스타일: 豪放, 婉约, 清新, 沉郁, 抒情, 禅意 등
 
 **영어** - Limerick (AABBA), Couplet (AA BB), Quatrain (ABAB/ABCB), 자유시를 지원합니다. 스타일: Bold, Lyrical, Fresh, Melancholic, Reflective, Zen 등
 
 **한국어** - 시조와 현대시(자유시)를 지원합니다. 스타일: 호방, 서정적, 청신, 우울, 선적, 전원 등
-
 
 ## 파일 구조
 

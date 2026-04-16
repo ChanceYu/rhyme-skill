@@ -1,20 +1,14 @@
-# rhyme — Rhyming Poetry Skill
+![](./assets/banner.png)
 
-> 中文版：[README.zh.md](./README.zh.md) <br/>
-> 한국어 버전: [README.ko.md](./README.ko.md)
+[中文](./README.zh.md) | [한국어](./README.ko.md)
 
 A rhyming poetry skill for Chinese, English, and Korean, compatible with all major AI agent platforms.
-
-
-![](./assets/snipaste.png)
-
 
 ## Installation
 
 ```bash
 npx skills add chanceyu/rhyme-skill
 ```
-
 
 ## Usage
 
@@ -56,17 +50,15 @@ rhyme the next line for: i like you more than i can say
 make this rhyme: the stars are bright tonight
 ```
 
-
 ## What it does
 
-Detects the input language, identifies the poetic form and rhyme sound, then generates **2 groups** of rhyming continuations in different styles — no prompting, no questions, direct output.
+Detects the input language, identifies the poetic form and rhyme sound, then generates **2 groups by default** of rhyming continuations. Users can explicitly request the group count, up to **10 groups** total — no prompting, no questions, direct output.
 
 **Chinese** — supports 五言 (5-char), 七言 (7-char), 词牌体 (ci-poetry), and free verse. Styles: 豪放、婉约、清新、沉郁、抒情、禅意 etc.
 
 **English** — supports Limerick (AABBA), Couplet (AA BB), Quatrain (ABAB/ABCB), and free verse. Styles: Bold, Lyrical, Fresh, Melancholic, Reflective, Zen etc.
 
 **Korean** — supports 시조 (Sijo) and 현대시 (free verse). Styles: 호방, 서정적, 청신, 우울, 선적, 전원 etc.
-
 
 ## File structure
 
@@ -81,4 +73,3 @@ README.zh.md      # 中文说明
 README.ko.md      # 한국어 설명
 docs/             # Design specs and implementation plans
 ```
-

@@ -1,20 +1,14 @@
-# rhyme — 押韵创作 Skill
+![](./assets/banner.png)
 
-> English version: [README.md](./README.md) <br/>
-> 한국어 버전: [README.ko.md](./README.ko.md)
+[English](./README.md) | [한국어](./README.ko.md)
 
 支持中文、英文、韩语的押韵创作技能，适用于各类 AI Agent 平台。
-
-
-![](./assets/snipaste.png)
-
 
 ## 安装
 
 ```bash
 npx skills add chanceyu/rhyme-skill
 ```
-
 
 ## 用法
 
@@ -54,17 +48,15 @@ rhyme the next line for: i like you more than i can say
 make this rhyme: the stars are bright tonight
 ```
 
-
 ## 功能说明
 
-自动识别输入语言、判断诗体、提取韵脚，直接输出 **2 组**不同风格的押韵续写，不询问、不解释。
+自动识别输入语言、判断诗体、提取韵脚，默认直接输出 **2 组**押韵续写；用户也可以显式指定输出组数，最多 **10 组**，不询问、不解释。
 
-**中文** — 支持五言、七言、词牌体、自由体。风格：豪放、婉约、清新、沉郁、抒情、禅意 等
+**中文** — 支持五言、七言、词牌体、自由体。普通句子或无规律输入会按分句数量与对应字数结构对齐续写；遇到重复尾词或并列句式时，会优先复用相近骨架。风格：豪放、婉约、清新、沉郁、抒情、禅意 等
 
 **英文** — 支持 Limerick（AABBA）、Couplet（AA BB）、Quatrain（ABAB/ABCB）、自由诗。风格：Bold、Lyrical、Fresh、Melancholic、Reflective、Zen 等
 
 **韩语** — 支持시조（時調）和현대시（自由诗）。风格：호방、서정적、청신、우울、선적、전원 等
-
 
 ## 文件结构
 

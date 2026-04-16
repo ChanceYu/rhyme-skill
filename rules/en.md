@@ -59,49 +59,57 @@ Find the final word of each line and extract its end sound (stressed vowel + tra
 
 ## Step 3: Generate Rhyming Output
 
-Based on the Step 1 input type (or `explicit_form`), select the corresponding template:
+Based on the Step 1 input type (or `explicit_form`), select the corresponding template. Output exactly `requested_group_count` groups; if Step 0 did not detect an explicit count, default to **2 groups**. Never exceed **10 groups**. If Step 0 recorded `slow_generation_notice = true`, treat it as an internal-only hint and do not print any waiting notice in the final output.
 
 ---
 
 ### Template A — Poetry input / Explicit format specified
 
-**Trigger:** Input type is "Poetry", or Step 0 detected an `explicit_form`.
+**Trigger:** Input type is "Poetry", or Step 0 detected an `explicit_form` that resolves to Limerick, Couplet, or Quatrain.
 
-Output **1 group**, strictly following the detected poetic form:
+Output `requested_group_count` groups, or 2 groups by default, strictly following the detected poetic form when the user's supplied lines do not exceed the target total:
 
-- **Limerick:** 5 lines, AABBA rhyme scheme, lines 1/2/5 longer (~8 syllables), lines 3/4 shorter (~5 syllables)
-- **Couplet:** 2–4 lines with paired end rhymes, last line must rhyme with at least one preceding line
-- **Quatrain:** 4 lines, ABAB or ABCB rhyme scheme
+- **Limerick:** target total 5 lines, AABBA rhyme scheme, lines 1/2/5 longer (~8 syllables), lines 3/4 shorter (~5 syllables)
+- **Couplet:** target total 2 lines, paired end rhymes
+- **Quatrain:** target total 4 lines, ABAB or ABCB rhyme scheme
 
-Style tag: choose one from Bold / Lyrical / Fresh / Melancholic / Scenic / Reflective / Zen / Pastoral
+Style tag: choose one from Bold / Lyrical / Fresh / Melancholic / Scenic / Reflective / Zen / Pastoral. Across multiple groups, vary the style and wording as much as possible while keeping the same formal constraints.
+- Every generated line must end with appropriate English punctuation. Match the source tone when clear; otherwise default to a trailing comma for non-final poetic lines and a period for the final generated line in each group.
+
+Count the user's supplied lines as follows:
+- Count only non-empty lines already present in the user's prompt after the instruction/form cue
+- Text on the same line after the cue phrase counts as supplied content; the cue phrase itself does not
+- A wrapped paragraph with no line breaks counts as 1 supplied line
+- Ignore the cue line itself and any empty lines
+
+Fixed-form line handling:
+- English fixed-form completion applies only to Limerick, Couplet, and Quatrain
+- If supplied lines are fewer than the target total, generate only the missing lines
+- If supplied lines already match the target total, add 0 lines
+- If `explicit_form` names another English form, route to Template B's multi-group free-verse/rhyming continuation fallback below
+- If supplied lines exceed the target total, do not force the fixed form; route to Template B's multi-group free-verse/rhyming continuation fallback below
 
 Output format:
 
 ~~~
-**[{Poetic form} · {Style}]**
-> {original input}
-{line 1}
-{line 2}
-{line 3}
-{line 4} (if applicable — Limerick has 5 lines; Couplet may have 2)
+**[Group {group_index} · {Poetic form} · {Style}]**
+{original input}
+{only the missing generated line(s) needed to complete the fixed form}
 ~~~
 
 ---
 
-### Template B — Ordinary sentence input
+### Template B — Ordinary sentence input / Fixed-form overflow fallback
 
-**Trigger:** Input type is "Ordinary sentence".
+**Trigger:** Input type is "Ordinary sentence", or Template A overflowed because the user's supplied lines exceed the fixed-form target total.
 
-Output **2 groups** in order:
+Output `requested_group_count` groups, or 2 groups by default. In each group, show the original input first, then output only one new continuation line or one short continuation paragraph; do not restate multiple prior lines below it, and do not offer explanatory text:
+- Every generated continuation line or sentence must end with appropriate English punctuation. Match the source tone when clear; otherwise default to a period for sentence endings and keep commas only where line-by-line poetic cadence clearly calls for them.
 
 ~~~
-**[Colloquial Rhyme]**
-> {original input}
-{1–2 lines matching the casual register and vocabulary of the input; end word must rhyme with the input's last word or a prominent end word}
-
-**[Poetic Version]**
-> {original input}
-{2–4 lines elevated to literary register; end rhyme required; richer imagery than the colloquial version}
+**[Group {group_index} · Rhyming Continuation]**
+{original input}
+{1 line or 1 short continuation paragraph that continues naturally in free verse or light rhyme; use the rhyme sound extracted in Step 2 as a soft constraint when possible, but do not force a fixed poetic form; vary wording and imagery across groups}
 ~~~
 
 ---
@@ -110,75 +118,53 @@ Output **2 groups** in order:
 
 **Trigger:** Input type is "Cannot determine".
 
-Output **exactly 3 groups** in order:
+Output `requested_group_count` groups, or 2 groups by default. In each group, show the original input first, then output only one new continuation line or one short continuation paragraph; do not offer explanatory text:
+- Every generated continuation line or sentence must end with appropriate English punctuation. Match the source tone when clear; otherwise default to a period for sentence endings and keep commas only where line-by-line poetic cadence clearly calls for them.
 
 ~~~
-**[Colloquial Rhyme]**
-> {original input}
-{1–2 casual rhyming lines; end word must rhyme with the input's last word or a prominent end word}
-
-**[{Poetry style 1}]**
-> {original input}
-{2–4 poetic lines; style tag from: Bold / Lyrical / Fresh / Melancholic / Scenic / Reflective / Zen / Pastoral}
-
-**[{Poetry style 2}]**
-> {original input}
-{2–4 poetic lines; different style tag from group 1; different imagery and vocabulary}
+**[Group {group_index} · Rhyming Continuation]**
+{original input}
+{1 line or 1 short continuation paragraph with a clear rhyming continuation; use the rhyme sound extracted in Step 2 as a soft constraint when possible, but keep each group internally consistent and vary the style or imagery across groups}
 ~~~
 
 ---
 
-> **Note:** The examples below use the old 3-group format. Follow Templates A/B/C above for the correct output format. Examples are provided for tonal reference only.
+> **Note:** The examples below reflect the current live default two-group output format. If the user requests a different group count, follow that count instead.
 
 ## Complete Output Examples
 
 ### Example 1: Free verse input
 
-**User input:** `/yayun The moon is high, the stars are bright`
+**User input:** `/rhyme The moon is high, the stars are bright`
 
-**Detection (internal, not output):** Free verse, rhyme reference: `-ight` (bright)
+**Detection (internal, not output):** Ordinary sentence / free-verse continuation, rhyme reference: `-ight`
 
 **Output:**
 
-**[Style 1: Lyrical]**
-> The moon is high, the stars are bright
-The wind sings soft through the quiet night,
-And carries your name like a fading light,
-I reach for you, but you're gone from sight,
-Only shadows remain of what felt right.
+**[Group 1 · Rhyming Continuation]**
+The moon is high, the stars are bright,
+The wind drifts low through the silver night,
+And keeps your distant memory in sight.
 
-**[Style 2: Bold]**
-> The moon is high, the stars are bright
-We rise before the dawn takes flight,
-And forge our path with all our might,
-No storm can dim this burning light,
-We'll face the world and win the fight.
-
-**[Style 3: Pastoral]**
-> The moon is high, the stars are bright
-The fireflies glow in the meadow at night,
-The river runs soft in the silver moonlight,
-A heron stands still in the last fading light,
-And all of the world feels quiet and right.
+**[Group 2 · Rhyming Continuation]**
+The moon is high, the stars are bright,
+Soft shadows lean across the quiet light,
+And hold your name inside the listening night.
 
 ---
 
 ### Example 2: Couplet input
 
-**User input:** `/yayun Roses are red, violets are blue`
+**User input:** `write a couplet: Roses are red`
 
-**Detection (internal, not output):** Couplet, rhyme reference: `-oo` (blue)
+**Detection (internal, not output):** `explicit_form = Couplet`, supplied lines = 1, target total = 2, generate 1 missing line
 
 **Output:**
 
-**[Style 1: Fresh]**
-The morning dew clings to the grass so new,
-And songbirds wake beneath the skies of blue.
+**[Group 1 · Couplet · Lyrical]**
+Roses are red,
+And moonlight lingers softly over you.
 
-**[Style 2: Melancholic]**
-The letters you left are just fragments I knew,
-I read them again in the cold morning dew.
-
-**[Style 3: Reflective]**
-Each path that I have walked brings me back to the view,
-Where the river runs clear and the sky opens true.
+**[Group 2 · Couplet · Fresh]**
+Roses are red,
+And dawn keeps painting every dream of you.
