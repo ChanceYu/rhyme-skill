@@ -1,4 +1,4 @@
-![](./assets/banner.png)
+# Rhyme Skill
 
 [English](./README.md) | [한국어](./README.ko.md)
 
